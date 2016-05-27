@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="none.css">
+<!-- this example uses only internal styles. change none to your file name -->
+<title>In-Out DivBurger</title>
+
+<script type="text/javascript">
+
+function initScripts () {
+setInterval('lookForDataChange()', 1000);
+alert("scripts initialized");
+}
+
+function myWordCount(inputFormParamater,outputDivParameter) {
+// Declare local variables 
+var tempId = 0; 
+tempId = document.getElementById(outputDivParameter);
+tempId.innerHTML = "The length is: " + inputFormParamater.length;
+}
+
+function moveDiv(inDiv,outDiv) {
+var inputDivId = document.getElementById(inDiv);
+var outputDivId = document.getElementById(outDiv);
+// write javaScript variable t to the outputDiv
+outputDivId.innerHTML = inputDivId.innerHTML ;
+}
+
+</script>
+<!-- styles below, scripts above -->
+
+
+<style type="text/css">
+
+#outputDiv {
+background-color: yellow;
+}
+
+#pinkDiv {
+background-color: pink;
+}
+
+div{
+height: 30px;
+width: 200px;
+border-style: solid;
+border-radius: 20px;
+margin: 30px; 
+padding: 20px;
+text-align: center; }
+}
+
+body {
+font-size: 14pt;
+font-family: "Courier New"}
+
+</style>
+<!-- Styles are above-->
+</head>
+
+
+<body onload="initScripts()">
+
+<button onclick=myWordCount(myForm1.myText.value,"outputDiv") id="Button1">Count now. input type text </button>
+
+
+<form name="myForm1" >
+<br>
+<input name="myText" size=80 value="This is text, not a text area" type="text" >
+<br>
+</form><!-- end of form1 -->
+
+
+<!-- ========================================================== -->
+<!-- don't mix up a) text above wtih b) textArea below -->
+<!-- ========================================================== -->
+
+
+<br>
+<form name="myForm2" > 
+<textarea name="myTextArea" cols=60 rows=9> This is a text area. It's larger than text in a form </textarea>
+<br>
+</form> <!-- end of the form2 -->
+
+
+<p>
+<button onclick=myWordCount(myForm2.myTextArea.value,"outputDiv") id="button2">Count now. TextArea</button>
+
+<div id="pinkDiv" >I'm in a div.</div>
+
+<button onclick=moveDiv("pinkDiv","outputDiv") id="button3">Move Pink Div to Yellow </button>
+
+
+<!-- below is out output -->
+<div id="outputDiv">
+Default on page load.... click the buttons..
+</div>
+<p>
+
+<br>
+<p></p>
+<p></p>
+<p></p>
+Hints:
+<ol>
+<li>Submit buttons should be outside of your forms!</li>
+<li>Tips for form tags are here: <a href="http://www.webmonkey.com/2010/02/html_cheatsheet/#Forms" target="_blank">http://www.webmonkey.com/2010/02/html_cheatsheet/#Forms</a></li>
+<li>Use the attribute "name". Here is an example: &nbsp &nbsp &nbsp name="myName"</li>
+<li>In Javascript the .value is needed for form content. example: userLastName = document.myForm1.myTextLastName.value; </li>
+<li>In Javascript this uses the method .innerhtml </li>
+</ol>
+
+
+<h1>Sample Code:</h1>
+See function myWordCount() in the code. Hit Control + U now! <br>
+<br>
+<img src="https://c1.staticflickr.com/1/164/407048630_98fc05284a.jpg">
+
+
+</body>
+</html>

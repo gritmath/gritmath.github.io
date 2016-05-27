@@ -1,0 +1,85 @@
+/*.oOOOo.              OOooOoO ooOoOOo o.     O    Oo     o      
+ .O     o.   oO         o          O    Oo     o   o  O   O       
+ o       O    O         O          o    O O    O  O    o  o       
+ O       o    o         oOooO      O    O  o   o oOooOoOo o       
+ o       O    O         O          o    O   o  O o      O O       
+ O    Oo o    o         o          O    o    O O O      o O       
+ `o     O'    O         o          O    o     Oo o      O o     . 
+  `OoooO Oo OooOO       O'      ooOOoOo O     `o O.     O OOoOooO                                                                 
+                                                                 
+OooOOo.  `OooOOo.   .oOOOo.    OooOoo o.OOoOoo  .oOOOo.  oOoOOoOOo 
+O     `O  o     `o .O     o.       O   O       .O     o      o     
+o      O  O      O O       o       o   o       o             o     
+O     .o  o     .O o       O       O   ooOO    o             O     
+oOooOO'   OOooOO'  O       o       o   O       o             o     
+o         o    o   o       O       O   o       O             O     
+O         O     O  `o     O' O     o   O       `o     .o     O     
+o'        O      o  `OoooO'  `OooOO'  ooOooOoO  `OoooO'      o'    
+                                                                                                                                    
+ .oOOOo.  .oOOOo.  .oOOOo.  
+.O     o  o     o  o     o  
+o         O.       O.       
+o          `OOoo.   `OOoo.  
+o               `O       `O 
+O                o        o 
+`o     .o O.    .O O.    .O 
+ `OoooO'   `oooO'   `oooO'  */
+
+ a {
+ 	color: white;
+ }
+
+ body {
+ 	font-family: "Comic Sans MS", cursive, sans-serif;
+ 	background-color: grey;
+ }
+
+ #header {
+ 	height: 275px;
+ 	width: 1405px;
+ 	margin-left: 45px;
+ 	margin-right: 45px;
+ 	padding-left: 35px;
+ 	padding-right: 35px;
+ 	padding-top: 7px;
+ 	padding-bottom: 7px;
+ 	border: solid white 3px;
+ 	border-radius: 5px;
+ 	background-color: red;
+ 	color: white;
+ 	text-align: center;
+ }
+
+ #content {
+ 	height: 955px;
+ 	width: 1445px;
+ 	margin: 45px;
+ 	padding: 15px;
+ 	border: solid white 3px;
+ 	border-radius: 5px;
+ 	background-color: red;
+ 	color: white;
+ 	font-size: 25px;
+ }
+
+ .submenu {
+ 	height: 40px;
+ 	width: 157px;
+ 	border: solid 2px white;
+ 	border-radius: 10px;
+ 	margin-left: 5px;
+ 	margin-right: 5px;
+ 	padding-top: 40px;
+ 	padding-bottom: 60px;
+ 	padding-left: 50px;
+ 	padding-right: 50px;
+ 	float: left;
+ 	background-color: #870101;
+ 	font-size: 35px;
+ 	text-align: center;
+ }
+
+ img {
+ 	border: 5px solid black;
+ 	margin: 10px;
+ }

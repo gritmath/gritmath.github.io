@@ -1,0 +1,85 @@
+ <!-- final project by Matt Gandee -->
+<html>
+<head>
+<title>Grit Math Quiz, because only you can push your limits to the right limit... </title>
+
+<script>
+
+function doTheQuiz(    )  {
+
+// top declare and init all your variables
+
+var scoreCorrect = 0;
+var jumpInDifficulty = 1;
+var myDifficulty = 10; 	
+var numberOfQuestions = 1;
+// set value
+numberOfQuestions = humanQuizChoices.questionCount.value
+console.log(numberOfQuestions);
+
+
+for (var i = 1  ;  i <= numberOfQuestions      ;   i++ ) 
+	{
+	var a = Math.floor ( Math.random() * myDifficulty + 1     );
+	var b = Math.floor ( Math.random() * myDifficulty + 1     );
+	scoreCorrect = scoreCorrect + askTheQuestion(a,b);
+	myDifficulty = myDifficulty + jumpInDifficulty;
+	}	
+	//end of for number of questions
+	
+	tempId = document.getElementById( "outputDiv");
+	tempId.innerHTML = "You correctly answered "   +  scoreCorrect + " questions.  Yay, consider more or less grit next quiz" ;
+
+	("your score is... "  +scoreCorrect);
+	return scoreCorrect;
+	
+}
+// end of funciton do quiz
+
+
+function askTheQuestion(x,y)  {
+	var questionString = "What is " + x + " plus " + y + "?";
+	var correctAnswer = x + y;
+	var userAnswer = "";
+	var wrongAnswerCount = 0;
+	while (userAnswer != correctAnswer )
+		{	
+		userAnswer = prompt(questionString);
+		if (userAnswer == correctAnswer) 
+			{ return 1; }
+			else { wrongAnswerCount++  }
+
+		}
+		//End of while not correct
+}
+//End of function ask question
+
+
+ 
+ 
+
+</script>
+
+</head>
+<body>
+
+
+
+<form name="humanQuizChoices">
+		 <input type="text" name="questionCount" value="1"> Pick the number of quiz questions
+	</form>
+
+<button onclick=doTheQuiz()>
+	Start Quiz 
+</button><br>
+
+
+<br><br>
+
+<div id="outputDiv"> 
+	result 
+</div>
+
+
+</body>
+</html>
