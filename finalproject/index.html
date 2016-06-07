@@ -5,35 +5,56 @@
 
 <script>
 
-function doTheQuiz(    )  {
+function doTheQuiz(  )  {
 
 // top declare and init all your variables
 
 var scoreCorrect = 0;
 var jumpInDifficulty = 1;
-var setDifficulty = 10; 	
+var currentDifficulty = 10; 	
 var numberOfQuestions = 1;
-// set value
-numberOfQuestions = humanQuizChoices.questionCount.value
-console.log(numberOfQuestions);
+var thisQuestionScore = 0;
 
-setDifficulty = humanQuizChoices.humanDifficulty.value
-setDifficulty = eval(setDifficulty);
+
+// set value based on the form input
+numberOfQuestions = humanQuizChoices.questionCount.value;
+numberOfQuestions = eval(numberOfQuestions);
+
+jumpInDifficulty = humanQuizChoices.humanDiffChoice.value;
+jumpInDifficulty = eval(jumpInDifficulty);
+
+
+
+// oupuut to the log what we thing the human has requested
+console.log("question count = " + numberOfQuestions);
+console.log("jumpInDifficulty = " +  jumpInDifficulty);
+
 
 
 for (var i = 1  ;  i <= numberOfQuestions      ;   i++ ) 
 	{
-	var x = Math.floor ( Math.random() * setDifficulty + 1 );
-	var y = Math.floor ( Math.random() * setDifficulty + 1 );
-	scoreCorrect = scoreCorrect + askTheQuestion(a,b);
-	setDifficulty = setDifficulty + jumpInDifficulty;
+
+	// setup my question, then ask the question  
+	var a = Math.floor ( Math.random() * currentDifficulty  + 1 );
+	var b = Math.floor ( Math.random() * currentDifficulty  + 1 );
+	thisQuestionScore = askTheQuestion(a,b);
+
+
+	// adjust the score and adjust the next difficulty 
+	scoreCorrect = scoreCorrect + thisQuestionScore ;
+    currentDifficulty =  currentDifficulty  + jumpInDifficulty;
+	
+
 	}	
 	//end of for number of questions
-	
-	tempId = document.getElementById( "outputDiv");
-	tempId.innerHTML = "You correctly answered "   +  scoreCorrect + " out of " numberOfQuestions " questions." ;
 
-	("your score is... "  +scoreCorrect);
+	tempFeedback = "You correctly answered " + scoreCorrect + " questions.";
+	console.log( tempFeedback  ) ;
+
+	tempId = document.getElementById("outputDiv");
+	tempId.innerHTML = tempFeedback ;
+
+
 	return scoreCorrect;
 	
 }
@@ -57,32 +78,34 @@ function askTheQuestion(x,y)  {
 }
 //End of function ask question
 
-
  
  
 
 </script>
-
 </head>
+
 <body>
 
-
-
 <form name="humanQuizChoices">
-		Pick the number of quiz questions <input type="text" name="questionCount" value="1">
-		<br> 
-		Set your own difficulty (Pick a number) <input type="text" name="humanDifficulty" value="10">		
-	</form>
+		Pick the number of quiz questions <input type="text" name="questionCount"  >
 
-<button onclick=doTheQuiz()>
+		<p>
+		<p>
+		<p>
+
+
+		<br>
+		Set your difficulty (Pick a number)  <input type="text" name="humanDiffChoice" >
+<form>
+
+<button onclick=doTheQuiz()> 
 	Start Quiz 
-</button><br>
-
+</button>
 
 <br><br>
 
 <div id="outputDiv"> 
-	result 
+	Result 
 </div>
 
 
