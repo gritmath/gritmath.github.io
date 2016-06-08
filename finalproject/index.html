@@ -1,82 +1,132 @@
  <!-- Final Project by Matt Gandee -->
 <html>
 <head>
-<title>Grit Math Quiz</title>
+<title>Grit Math Quiz MG</title>
+<style type="text/css">
+#feedbackDiv {
+	background-color: pink;
+}
+
+#answerDiv {
+	background-color: yellow;
+}
+
+
+#questionDiv {
+	background-color: green;
+	color: white;
+	font-size: 24pt;
+	font-family: Comic Sans MS;
+}
+
+
+</style>
+
+
 
 <script>
 
-function doTheQuiz(  )  {
+function startQuiz(  )  {
 
 // top declare and init all your variables
-
 var scoreCorrect = 0;
 var jumpInDifficulty = 1;
 var currentDifficulty = 10; 	
 var numberOfQuestions = 1;
 var thisQuestionScore = 0;
+var correctAnswer = 0;
+var wrongAnswerCount = 0;
 
 
 // set value based on the form input
 numberOfQuestions = humanQuizChoices.questionCount.value;
 numberOfQuestions = eval(numberOfQuestions);
+// oupuut to the log what we thing the human has requested
+console.log("question count = " + numberOfQuestions);
 
 jumpInDifficulty = humanQuizChoices.humanDiffChoice.value;
 jumpInDifficulty = eval(jumpInDifficulty);
-
-
-
 // oupuut to the log what we thing the human has requested
-console.log("question count = " + numberOfQuestions);
 console.log("jumpInDifficulty = " +  jumpInDifficulty);
 
+correctAnswer = askTheQuestion(currentDifficulty);
 
 
-for (var i = 1  ;  i <= numberOfQuestions      ;   i++ ) 
-	{
 
+
+
+
+
+
+}
+// end of funciton start quiz
+
+
+
+
+
+function askTheQuestion( currentDifficulty  )  {
 	// setup my question, then ask the question  
 	var a = Math.floor ( Math.random() * currentDifficulty  + 1 );
 	var b = Math.floor ( Math.random() * currentDifficulty  + 1 );
-	thisQuestionScore = askTheQuestion(a,b);
+
+	var questionString = "What is " + a + " plus " + b + "?";
+	var correctAnswer = a + b;
+
+	tempId = document.getElementById("questionDiv");
+	tempId.innerHTML = questionString;
+
+	tempId = document.getElementById("answerDiv");
+	tempId.innerHTML = correctAnswer;
+
+	return correctAnswer; 
 
 
-	// adjust the score and adjust the next difficulty 
-	scoreCorrect = scoreCorrect + thisQuestionScore ;
-    currentDifficulty =  currentDifficulty  + jumpInDifficulty;
-	
-
-	}	
-	//end of for number of questions
-
-	tempFeedback = "You correctly answered " + scoreCorrect + " questions.";
-	console.log( tempFeedback  ) ;
-
-	tempId = document.getElementById("outputDiv");
-	tempId.innerHTML = tempFeedback ;
-
-
-	return scoreCorrect;
-	
-}
-// end of funciton do quiz
-
-
-function askTheQuestion(x,y)  {
-	var questionString = "What is " + x + " plus " + y + "?";
-	var correctAnswer = x + y;
-	var userAnswer = "";
-	var wrongAnswerCount = 0;
-	while (userAnswer != correctAnswer )
-		{	
-		userAnswer = prompt(questionString);
-		if (userAnswer == correctAnswer) 
-			{ return 1; }
-			else { wrongAnswerCount++  }
-
-		}
-		//End of while not correct
 }
 //End of function ask question
+
+
+
+
+function  checkAnswer() {
+	var tempAnswer = 0;
+	var correctAnswer = 0;
+	var answerFeedback = "x";
+	var tempId = 0;
+	var scoreCorrect = 0; 
+
+	// set value based on the form input
+	tempAnswer = humanQuizChoices.humanNumericAnswer.value;
+	tempAnswer  = eval(tempAnswer);
+	// oupuut to the log what we thing the human has answered
+	console.log( tempAnswer);
+
+
+	// set value based on the yellow answer div value
+	tempId = document.getElementById("answerDiv");
+	correctAnswer  = tempId.innerHTML; 
+	console.log( correctAnswer);
+
+
+	if ( tempAnswer == correctAnswer) 
+			{ 
+			answerFeedback = "corect, your answer was.... " + tempAnswer ;			
+			// adjust the score and adjust the next difficulty 
+			scoreCorrect++ ;
+			// currentDifficulty =  currentDifficulty  + jumpInDifficulty;
+			// setTimeout( callFunction, 3000); 
+			// wait 3 seconds
+			}
+			else { 
+				answerFeedback = "incorrect, look for hints, your answer was... " + tempAnswer ;			
+				 }
+	
+	tempId = document.getElementById("feedbackDiv");
+	tempId.innerHTML = answerFeedback;
+
+	return tempAnswer; 
+}
+
 
  
  
@@ -86,27 +136,59 @@ function askTheQuestion(x,y)  {
 
 <body>
 
+<div id="feedbackDiv"> 
+	Initial Result Feedback
+</div>
+<p></p>
+
+<div id="answerDiv"> 
+	Initial Result Answer
+</div>
+<p></p>
+
+
+
+<div id="questionDiv"> 
+	Initial Result Q 
+</div>
+<p></p>
+
+
+
 <form name="humanQuizChoices">
-		Pick the number of quiz questions <input type="text" name="questionCount"  >
 
-		<p>
-		<p>
-		<p>
+	Pick the number of quiz questions <input type="text" name="questionCount" value="1" >
+	<p></p>
+	
+	Set your difficulty (Pick a number)  <input type="text" name="humanDiffChoice" value="1" >
+	<p></p>
+
+	Type your answer   <input type="text" name="humanNumericAnswer" >
+	<p></p>
+
+</form>
 
 
-		<br>
-		Set your difficulty (Pick a number)  <input type="text" name="humanDiffChoice" >
-<form>
+<form name="statusForm">
 
-<button onclick=doTheQuiz()> 
+	Test Output <input type="text" name="test1"  >
+	<p></p>
+
+</form>
+
+
+
+<button onclick=startQuiz()> 
 	Start Quiz 
 </button>
+<p></p>
 
-<br><br>
+<button onclick=checkAnswer()> 
+	Check My answer 
+</button>
+<p></p>
 
-<div id="outputDiv"> 
-	Result 
-</div>
+
 
 
 </body>
